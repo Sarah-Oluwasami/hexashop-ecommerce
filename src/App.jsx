@@ -1,6 +1,6 @@
 import "./App.css";
-import React, { useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Login from "./structure/Login";
 import Signup from "./structure/Signup";
 import Cart from "./Cart";
@@ -13,8 +13,20 @@ import Productdetails from "./structure/Productdetails";
 import Checkout from "./structure/Checkout";
 
 function App() {
-  const [savedData, setSavedData] = React.useState();
-  const [cart, setCart] = React.useState(0);
+  const [savedData, setSavedData] = useState();
+  const [cart, setCart] = useState(0);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+    setIsLoggedIn(loggedIn);
+  }, []);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("email");
+  };
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -28,12 +40,11 @@ function App() {
             },
           }
         );
-
         const data = await response.json();
         console.log(data);
         setSavedData(data);
       } catch (error) {
-        console.log("Error fetching data:", error);
+        console.error("Error fetching data:", error);
       }
     };
     fetchPosts();
@@ -41,44 +52,55 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        {/* Routes without Header and Footer */}
-        <Route path="/" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-
-        {/* Routes with Header and Footer */}
-        <Route
-          path="*"
-          element={
+      <div>
+        {isLoggedIn && (
+          <div>
+            <button onClick={handleLogout} className="absolute top-2 z-20 left-20 border-slate-500 border-2 rounded-lg px-1 sm:left-2">Logout</button>
+          </div>
+        )}
+        <Routes>
+          {!isLoggedIn ? (
             <>
-              <Header />
-              <Routes>
-                <Route
-                  path="/header"
-                  element={<Header cart={Cart} setCart={setCart} />}
-                />
-                <Route
-                  path="/overview"
-                  element={<Overview savedData={savedData} />}
-                />
-                <Route path="/cart" element={<Cart />} />
-                <Route
-                  path="/about"
-                  element={<About savedData={savedData} />}
-                />
-                <Route path="/contact" element={<Contact />} />
-                <Route
-                  path="/productdetails/:id"
-                  element={<Productdetails />}
-                />
-                <Route path="/checkout" element={<Checkout />} />
-                {/* Other routes */}
-              </Routes>
-              <Footer />
+              <Route
+                path="/login"
+                element={<Login setIsLoggedIn={setIsLoggedIn} />}
+              />
+              <Route path="/signup" element={<Signup />} />
+              <Route path="*" element={<Navigate to="/login" />} />
             </>
-          }
-        />
-      </Routes>
+          ) : (
+            <>
+              <Route
+                path="*"
+                element={
+                  <>
+                    <Header cart={cart} setCart={setCart} />
+                    <Routes>
+                      <Route
+                        path="/overview"
+                        element={<Overview savedData={savedData} />}
+                      />
+                      <Route path="/cart" element={<Cart />} />
+                      <Route
+                        path="/about"
+                        element={<About savedData={savedData} />}
+                      />
+                      <Route path="/contact" element={<Contact />} />
+                      <Route
+                        path="/productdetails/:id"
+                        element={<Productdetails />}
+                      />
+                      <Route path="/checkout" element={<Checkout />} />
+                      <Route path="*" element={<Navigate to="/overview" />} />
+                    </Routes>
+                    <Footer />
+                  </>
+                }
+              />
+            </>
+          )}
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

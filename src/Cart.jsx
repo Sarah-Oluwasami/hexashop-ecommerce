@@ -45,7 +45,7 @@ function Cart() {
 
   return (
     <>
-      <div className="mx-16">
+      <div className="mx-2 lg:mx-16 max-[640px]:text-xs">
         <blockquote className="uppercase text-sm tracking-tight mt-28">
           <b className="text-zinc-400 font-semibold ">home / </b>
           <b>shopping cart</b>
@@ -86,7 +86,7 @@ function Cart() {
 
               <blockquote className="">
                 <button
-                  className="mr-1 bg-slate-100 px-2 border-2 hover:bg-black hover:text-white"
+                  className="mr-1 bg-slate-100 lg:px-2  px-[3px] border-2 hover:bg-black hover:text-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleIncreaseQuantity(photo.id);
@@ -98,7 +98,7 @@ function Cart() {
                 {photo.itemQuantity || 0}
 
                 <button
-                  className="ml-1 bg-slate-100 px-[11px] border-2 hover:bg-black hover:text-white"
+                  className="ml-1 bg-slate-100 lg:px-[11px] px-[5px] border-2 hover:bg-black hover:text-white"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleDecreaseQuantity(photo.id);
@@ -117,7 +117,7 @@ function Cart() {
 
         {/* <button onClick={handleClearFromCart}>Clear cart</button> */}
 
-        <div className=" my-20 w-1/3">
+        <div className=" my-20 lg:w-1/3 w-full">
           <h1 className="font-bold text-3xl">Cart Totals</h1>
 
           <div className="my-6">
@@ -155,10 +155,7 @@ function Cart() {
             </blockquote>
 
             <button className="uppercase bg-amber-700 text-zinc-100 px-8 py-4 my-6">
-              <Link
-                to={"/checkout"}
-                className=""
-              >
+              <Link to={"/checkout"} className="">
                 Proceed to Checkout
               </Link>
             </button>

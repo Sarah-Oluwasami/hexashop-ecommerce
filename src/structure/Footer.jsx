@@ -2,8 +2,8 @@
 
 function Footer() {
   return (
-    <div className="bg-gray-50 h-[32rem]">
-      <section className="grid grid-cols-4 justify-around mx-14 mb-32 pt-10">
+    <div className="bg-gray-50 h-fit">
+      <section className="grid grid-cols-4 justify-around sm:mx-14 mb-32 pt-10 text-xs">
         <div>
           <h1 className="uppercase text-sm tracking-wider font-semibold mb-8">
             Company info
@@ -30,10 +30,14 @@ function Footer() {
             help links
           </h1>
           <ul>
-            <a href="">Tracking </a><br />
-            <a href=""> Order Status</a><br />
-            <a href="">Delivery</a><br />
-            <a href="">Shipping Info</a><br />
+            <a href="">Tracking </a>
+            <br />
+            <a href=""> Order Status</a>
+            <br />
+            <a href="">Delivery</a>
+            <br />
+            <a href="">Shipping Info</a>
+            <br />
             <a href="">FAQ</a>
           </ul>
         </div>
@@ -43,9 +47,12 @@ function Footer() {
             useful links
           </h1>
           <ul>
-            <a href="">Special </a><br />
-            <a href="">Offers</a><br />
-            <a href="">Gift Cards </a><br />
+            <a href="">Special </a>
+            <br />
+            <a href="">Offers</a>
+            <br />
+            <a href="">Gift Cards </a>
+            <br />
             <a href="">Advertising Terms of Use</a>
           </ul>
         </div>
@@ -64,16 +71,14 @@ function Footer() {
         </div>
       </section>
 
-      <hr className="mx-14 bg-gray-800 " />
+      <hr className="sm:mx-14 mx-2 bg-gray-800 " />
 
-      <blockquote className=" mx-12 my-10">
-        <div >
+      <blockquote className=" sm:mx-12 mx-2 my-2 sm:my-10">
+        <div>
           <h1 className="my-2">&copy; 2020 NorthStar eCommerce</h1>
           <span>Privacy Policy </span>{" "}
           <span className="pl-2">Terms & Conditions</span>
         </div>
-
-       
       </blockquote>
     </div>
   );

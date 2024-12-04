@@ -56,13 +56,13 @@ function Productdetails() {
 
   return (
     <div>
-      <div className="main-container my-36 flex justify-evenly">
+      <div className="main-container my-20 lg:my-36 mx-2 lg:mx-14 grid grid-cols-2 gap-2">
         <blockquote>
           {savedData ? (
             <img
               src={savedData.urls.full}
               alt={savedData.alt_description || "Product Image"}
-              className="w-[35rem] h-[47rem] mb-4 object-cover"
+              className="w-[20rem] lg:w-[32rem] xl:h-[47rem] mb-4 object-cover"
               onClick={() => {
                 handleAddToCart(savedData);
               }}
@@ -72,33 +72,33 @@ function Productdetails() {
           )}
         </blockquote>
 
-        <blockquote>
+        <blockquote className="  sm:w-fit ">
           <div className="uppercase text-xs tracking-tight mb-3">
             <b className=" text-zinc-400 font-semibold">
               home / shop / randoms /
             </b>
             <b className=""> shop</b>
           </div>
-          <p className="font-semibold text-3xl mb-6">
+          <p className="font-semibold sm:text-xl xl:text-3xl mb-1 sm:mb-6">
             {savedData?.alt_description || "Product Description"}
           </p>
 
-          <div className="flex items-center w-6 mb-8">
+          <div className="flex items-center w-3 xl:w-6 mb-2 sm:mb-8">
             <img src="/images/star-icon.jpg" alt="star icon" />
             <img src="/images/star-icon.jpg" alt="star icon" />
             <img src="/images/star-icon.jpg" alt="star icon" />
             <img src="/images/star-icon.jpg" alt="star icon" />
             <img src="/images/faded-star-icon.jpg" alt="star icon" />
-            <p className="px-2 text-xl">(15)</p>
+            <p className="px-2 text-xs xl:text-xl">(15)</p>
           </div>
 
-          <div className="flex justify-between w-52 mb-6">
-            <i className="text-sky-900 text-3xl">
+          <div className="mb-2 sm:mb-6">
+            <i className="text-sky-900 text-xl xl:text-3xl">
               {"$" + savedData?.height.toFixed(2)}
             </i>
           </div>
 
-          <div className="text-neutral-700 w-[49rem] mb-16">
+          <div className="text-neutral-700 mb-8 xl:mb-16 xl:text-2xl text-sm">
             <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus
               odio ipsam quisquam soluta ducimus quaerat unde reprehenderit, eos
@@ -106,8 +106,8 @@ function Productdetails() {
             </p>
           </div>
 
-          <div className="group relative mb-5 inline-block">
-            <button className="border-2 w-56 h-14 hover:bg-zinc-100">
+          <div className="group relative xl:mb-5 inline-block">
+            <button className="border-2 xl:w-56 px-10 py-2 xl:h-14 hover:bg-zinc-100">
               Select Size
             </button>
 
@@ -132,13 +132,13 @@ function Productdetails() {
               onClick={() => {
                 handleAddToCart(savedData);
               }}
-              className="border-[5px] mt-5 mb-6 mx-[-4px] px-10 py-4 text-white border-white text-lg bg-sky-800"
+              className="border-[5px] mt-5 mb-6 mx-[-4px] xl:px-10 px-6 py-2 xl:py-4 text-white border-white xl:text-lg bg-sky-800"
             >
               ADD TO CART
             </button>
           </div>
 
-          <div className="text-lg mb-20">
+          <div className="xl:text-lg ">
             <p>
               Category:
               <span className="text-zinc-700"> Women, Polo, Casual</span>
@@ -146,7 +146,7 @@ function Productdetails() {
             Tags: <span className="text-zinc-700 ">Modern, Design, cotton</span>
           </div>
 
-          <div className="flex items-center w-6">
+          {/* <div className="flex items-center w-6">
             <img
               src="/images/facebook-icon.png"
               alt="Facebook"
@@ -164,7 +164,7 @@ function Productdetails() {
             />
             <img src="/images/google-icon.png" alt="Google" className="mx-1" />
             <img src="/images/gmail-icon.png" alt="Gmail" className="mx-1" />
-          </div>
+          </div> */}
         </blockquote>
       </div>
 
@@ -177,7 +177,7 @@ function Productdetails() {
             Reviews(0)
           </p>
         </blockquote>
-        <blockquote className="border px-16 py-14 text-neutral-600">
+        <blockquote className="border w-full px-16 py-14 text-neutral-600">
           <p>
             A key objective is engaging digital marketing customers and allowing
             them to interact with the brand through servicing and delivery of

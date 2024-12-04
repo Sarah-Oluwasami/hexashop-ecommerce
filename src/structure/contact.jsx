@@ -2,15 +2,15 @@
 
 function contact() {
   return (
-    <div>
+    <div className="">
       <blockquote className="bg-[url('/images/contact-hero.jpg')] w-[100%] h-[30rem] bg-cover relative mt-[2rem]">
-        <h1 className=" w-[30rem] text-5xl text-center  text-white absolute bottom-32 left-10 ">
+        <h1 className=" w-[30rem] md:text-5xl text-3xl text-center  text-white absolute bottom-32 left-10 ">
           CONTACT US
         </h1>
       </blockquote>
 
-      <section className="flex justify-around my-32">
-        <div>
+      <section className="flex max-lg:flex-col lg:flex-row justify-around my-32 mx-6">
+        <div className="mb-6">
           <h1 className="text-2xl font-bold text-zinc-700 mb-12">
             We would love to hear from you.
           </h1>
@@ -19,8 +19,8 @@ function contact() {
             here. We would love to hear from you.
           </p>
 
-          <form action="" className="mt-12">
-            <div className="flex mb-4">
+          <form action="" className="mt-12 ">
+            <div className="flex max-sm:flex-col lg:flex-row mb-4">
               <blockquote>
                 <label htmlFor="Name" className="text-sm text-zinc-700">
                   Name
@@ -46,7 +46,7 @@ function contact() {
               </blockquote>
             </div>
 
-            <blockquote>
+            <blockquote className="">
               <label htmlFor="Message" className="text-sm text-zinc-700">
                 Message
               </label>
@@ -55,7 +55,7 @@ function contact() {
                 className="border-2 border-zinc-100 transition duration-500 hover:border-zinc-300"
                 name="message"
                 rows="7"
-                cols="82"
+                cols="50"
               ></textarea>
             </blockquote>
 

@@ -28,7 +28,7 @@ function Checkout() {
 
   return (
     <div>
-      <div className="mx-16">
+      <div className="sm:mx-16 mx-3">
         <blockquote className="uppercase text-sm mt-28 mb-8">
           <b className="text-zinc-400 font-semibold ">home / </b>
           <b>checkout</b>
@@ -38,7 +38,7 @@ function Checkout() {
           <h1 className="text-3xl font-semibold">Billing Details</h1>
 
           <form action="" className="mt-8">
-            <blockquote className="flex">
+            <blockquote className="flex max-sm:flex-col md:flex-row">
               <div>
                 <label htmlFor="" className="text-sm">
                   First Name<span className="text-red-600 ">*</span>
@@ -87,7 +87,7 @@ function Checkout() {
             />
             <br />
 
-            <blockquote className="flex">
+            <blockquote className="flex max-sm:flex-col md:flex-row">
               <div>
                 {" "}
                 <label htmlFor="" className="text-sm">
@@ -111,7 +111,7 @@ function Checkout() {
                   type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="border-[1px] w-96 h-8 mb-2 text-sm"
+                  className="border-[1px] w-96  h-8 mb-2 text-sm"
                 />
               </div>
             </blockquote>
@@ -121,8 +121,8 @@ function Checkout() {
         <div>
           <h1 className="text-3xl font-semibold mt-8 ">Your Order</h1>
 
-          <div>
-            <blockquote className="grid grid-cols-2 py-3 px-3 text-sm mt-8 font-semibold border-y-[1px] border-x-[1px]">
+          <div className="">
+            <blockquote className="grid grid-cols-2 gap-32 py-3 px-3 text-sm mt-8 font-semibold border-[1px]">
               <p>Product</p>
               <p>Total</p>
             </blockquote>
@@ -130,28 +130,29 @@ function Checkout() {
             {cart?.map((photo) => (
               <div
                 key={photo.id}
-                className=" grid grid-cols-2 py-3 px-6 text-xs text-zinc-600 border-b-[1px] border-x-[1px] "
+                className=" grid grid-cols-2 gap-32 py-3 px-6 text-[8px] sm:text-xs text-zinc-600 border-b-[1px] border-x-[1px] "
               >
                 <p className="">{photo.description}</p>
                 <p>${photo.price.toFixed(2)}</p>
               </div>
             ))}
 
-            <blockquote className="grid grid-cols-2 py-3 px-2 text-xs border-b-[1px] border-x-[1px] ">
+            <blockquote className="grid grid-cols-2 gap-32 py-3 px-2 text-xs border-b-[1px] border-x-[1px] ">
               <p className="text-zinc-600"> Subtotal</p>
               <p className="">${totalItemAmount.toFixed(2)}</p>
             </blockquote>
 
-            <button className="uppercase bg-amber-700 text-zinc-100 px-8 py-4 mt-6 mb-10" disabled={isFormValid()}>
-              
-                <PaystackPayment
-                  amount={totalItemAmount} // Amount in your currency
-                  email={email}
-                  name={`${firstName} ${lastName}`}
-                  phone={phone}
-                  onSuccess={handlePaymentSuccess}
-                />
-             
+            <button
+              className="uppercase bg-amber-700 text-zinc-100 px-8 py-4 mt-6 mb-10"
+              disabled={isFormValid()}
+            >
+              <PaystackPayment
+                amount={totalItemAmount} // Amount in your currency
+                email={email}
+                name={`${firstName} ${lastName}`}
+                phone={phone}
+                onSuccess={handlePaymentSuccess}
+              />
             </button>
           </div>
         </div>
