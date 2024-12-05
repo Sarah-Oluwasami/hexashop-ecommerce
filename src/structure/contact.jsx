@@ -4,12 +4,12 @@ function contact() {
   return (
     <div className="">
       <blockquote className="bg-[url('/images/contact-hero.jpg')] w-[100%] h-96 sm:h-[30rem] bg-cover relative mt-[2rem]">
-        <h1 className=" md:w-[30rem] px-6 text-5xl text-center  text-white absolute bottom-20 md:left-10 ">
+        <h1 className=" md:w-[30rem] px-6 text-4xl text-center  text-white absolute bottom-20 md:left-10">
           CONTACT US
         </h1>
       </blockquote>
 
-      <section className="flex max-lg:flex-col lg:flex-row justify-around my-32 mx-6">
+      <section className="flex max-lg:flex-col lg:flex-row justify-around my-20 mx-6">
         <div className="mb-6">
           <h1 className="text-2xl font-bold text-zinc-700 mb-12">
             We would love to hear from you.
@@ -54,8 +54,8 @@ function contact() {
               <textarea
                 className="border-2 border-zinc-100 transition duration-500 hover:border-zinc-300"
                 name="message"
-                rows="7"
-                cols="50"
+                rows="6"
+                cols="38"
               ></textarea>
             </blockquote>
 

@@ -64,7 +64,7 @@ function Checkout() {
                 <input
                   type="text"
                   value={firstName}
-                  className="border-[1px] w-[21rem] h-8 mb-2 mr-6"
+                  className="border-[1px] w-72 sm:w-[21rem] h-8 mb-2 mr-6"
                   onChange={(e) => setFirstName(e.target.value)}
                   onBlur={validateForm}
                   required
@@ -79,7 +79,7 @@ function Checkout() {
                 <input
                   type="text"
                   value={lastName}
-                  className="border-[1px] w-[21rem] h-8 mb-2"
+                  className="border-[1px] w-72 sm:w-[21rem] h-8 mb-2"
                   onChange={(e) => setLastName(e.target.value)}
                   onBlur={validateForm}
                   required
@@ -94,7 +94,7 @@ function Checkout() {
             <input
               type="email"
               value={email}
-              className="border-[1px] w-96 h-8 mb-2 text-sm"
+              className="border-[1px] w-64 sm:w-96 h-8 mb-2 text-sm"
               onChange={(e) => setEmail(e.target.value)}
               onBlur={validateForm}
               required
