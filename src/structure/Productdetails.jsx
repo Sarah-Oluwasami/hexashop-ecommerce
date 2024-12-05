@@ -62,7 +62,7 @@ function Productdetails() {
             <img
               src={savedData.urls.full}
               alt={savedData.alt_description || "Product Image"}
-              className="w-[20rem] lg:w-[32rem] xl:h-[47rem] mb-4 object-cover"
+              className="w-[20rem] h-56 lg:w-[32rem] xl:h-[47rem] mb-4 object-cover"
               onClick={() => {
                 handleAddToCart(savedData);
               }}

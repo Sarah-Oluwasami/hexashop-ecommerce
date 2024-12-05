@@ -3,8 +3,8 @@
 function contact() {
   return (
     <div className="">
-      <blockquote className="bg-[url('/images/contact-hero.jpg')] w-[100%] h-[30rem] bg-cover relative mt-[2rem]">
-        <h1 className=" w-[30rem] md:text-5xl text-3xl text-center  text-white absolute bottom-32 left-10 ">
+      <blockquote className="bg-[url('/images/contact-hero.jpg')] w-[100%] h-96 sm:h-[30rem] bg-cover relative mt-[2rem]">
+        <h1 className="  w-[30rem] text-5xl text-center  text-white absolute bottom-20 md:left-10 ">
           CONTACT US
         </h1>
       </blockquote>

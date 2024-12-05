@@ -11,7 +11,7 @@ function Overview({ savedData }) {
   
 
   return (
-    <div className="relative ">
+    <div className="relative  ">
       <section className="">
         <div className="bg-[url('/images/hero-bg.png')] w-[100%] md:h-[50rem] h-[25rem] bg-cover relative sm:mt-[2rem] mt-0">
           <h1 className=" w-[25rem] text-4xl text-right md:text-center font-bold text-white absolute top-56 md:top-64 md:right-80 right-0">

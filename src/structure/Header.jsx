@@ -17,7 +17,7 @@ function Header() {
       {/* Toggle Button */}
       <button
         onClick={toggleSidebar}
-        className="fixed top-0 left-2 z-20  my-2 rounded-md sm:hidden"
+        className="fixed top-0 left-2 z-20  my-2 rounded-md block sm:hidden"
       >
         <img src="/images/navbar-icon.png" alt="" className="w-6" />
       </button>

@@ -55,7 +55,7 @@ function App() {
       <div>
         {isLoggedIn && (
           <div>
-            <button onClick={handleLogout} className="absolute top-2 z-20 left-20 border-slate-500 border-2 rounded-lg px-1 sm:left-2">Logout</button>
+            <button onClick={handleLogout} className="absolute top-2 z-20 left-20 border-slate-500 border-2 rounded-lg px-1 sm:left-2 bg-white">Logout</button>
           </div>
         )}
         <Routes>

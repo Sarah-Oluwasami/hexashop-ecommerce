@@ -13,7 +13,7 @@ function PaystackPayment({ amount, email, onSuccess }) {
       phone: "1234567890",
     },
     publicKey,
-    text: "Place Order",
+    text: "Place order",
     onSuccess: (reference) => {
       console.log(reference); // Successful payment reference
       onSuccess(reference); // Call custom success handler

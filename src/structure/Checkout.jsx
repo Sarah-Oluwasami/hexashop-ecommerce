@@ -7,154 +7,155 @@ function Checkout() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phone, setPhone] = useState("");
+  const [formValid, setFormValid] = useState(false);
 
-  const handlePaymentSuccess = (reference) => {
-    console.log("Payment successful!", reference);
-    alert("Payment successful!");
-    // Perform post-payment actions here, like updating your database
-  };
   const cart = useSelector((state) => state.cart.carts);
-  console.log(cart);
-
   const totalItemAmount = cart.reduce(
     (total, photo) => total + photo.price * photo.itemQuantity,
     0
   );
 
-  const isFormValid = () => {
-    return firstName && lastName && email && phone;
+  const validateForm = () => {
+    if (!firstName || !lastName || !email || !phone) {
+      setFormValid(false);
+      return false;
+    }
+    // Basic email and phone validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const phoneRegex = /^\d{10,15}$/;
+    if (!emailRegex.test(email) || !phoneRegex.test(phone)) {
+      alert("Please provide a valid email and phone number.");
+      setFormValid(false);
+      return false;
+    }
+    setFormValid(true);
+    return true;
   };
 
+  const handlePaymentSuccess = (reference) => {
+    console.log("Payment successful!", reference);
+    alert("Payment successful!");
+    // Perform post-payment actions here
+  };
+
+  const handleCheckout = () => {
+    if (!validateForm()) return;
+    // Trigger Paystack payment flow
+  };
 
   return (
     <div>
       <div className="sm:mx-16 mx-3">
         <blockquote className="uppercase text-sm mt-28 mb-8">
-          <b className="text-zinc-400 font-semibold ">home / </b>
+          <b className="text-zinc-400 font-semibold">home / </b>
           <b>checkout</b>
         </blockquote>
 
         <div>
           <h1 className="text-3xl font-semibold">Billing Details</h1>
 
-          <form action="" className="mt-8">
-            <blockquote className="flex max-sm:flex-col md:flex-row">
+          <form className="mt-8">
+            <div className="flex flex-wrap md:flex-nowrap">
               <div>
-                <label htmlFor="" className="text-sm">
-                  First Name<span className="text-red-600 ">*</span>
+                <label className="text-sm">
+                  First Name<span className="text-red-600">*</span>
                 </label>
                 <br />
                 <input
                   type="text"
                   value={firstName}
                   className="border-[1px] w-[21rem] h-8 mb-2 mr-6"
-                  required
                   onChange={(e) => setFirstName(e.target.value)}
+                  onBlur={validateForm}
+                  required
                 />
               </div>
 
               <div>
-                <label htmlFor="" className="text-sm">
-                  Last Name<span className="text-red-600 ">*</span>
+                <label className="text-sm">
+                  Last Name<span className="text-red-600">*</span>
                 </label>
                 <br />
                 <input
                   type="text"
                   value={lastName}
                   className="border-[1px] w-[21rem] h-8 mb-2"
-                  required
                   onChange={(e) => setLastName(e.target.value)}
+                  onBlur={validateForm}
+                  required
                 />
               </div>
-            </blockquote>
-            <label htmlFor="" className="text-sm">
-              Street Address<span className="text-red-600">*</span>
+            </div>
+
+            <label className="text-sm">
+              Email Address<span className="text-red-600">*</span>
             </label>
             <br />
             <input
-              type="text"
-              placeholder=" House number and street name"
-              className="border-[1px] w-1/2 h-8 mb-2 text-sm"
-            />
-            <br />
-            <label htmlFor="" className="text-sm">
-              Town / City<span className="text-red-600">*</span>
-            </label>
-            <br />
-            <input
-              type="text"
-              className="border-[1px] w-1/2 h-8 mb-2 text-sm"
+              type="email"
+              value={email}
+              className="border-[1px] w-96 h-8 mb-2 text-sm"
+              onChange={(e) => setEmail(e.target.value)}
+              onBlur={validateForm}
+              required
             />
             <br />
 
-            <blockquote className="flex max-sm:flex-col md:flex-row">
-              <div>
-                {" "}
-                <label htmlFor="" className="text-sm">
-                  Phone<span className="text-red-600">*</span>
-                </label>
-                <br />
-                <input
-                  type="number"
-                  value={phone}
-                  className="border-[1px] w-72 h-8 mb-2 text-sm mr-6"
-                  onChange={(e) => setPhone(e.target.value)}
-                />
-              </div>
-              <div>
-                {" "}
-                <label htmlFor="" className="text-sm">
-                  Email Address<span className="text-red-600">*</span>
-                </label>{" "}
-                <br />
-                <input
-                  type="text"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="border-[1px] w-96  h-8 mb-2 text-sm"
-                />
-              </div>
-            </blockquote>
+            <label className="text-sm">
+              Phone<span className="text-red-600">*</span>
+            </label>
+            <br />
+            <input
+              type="tel"
+              value={phone}
+              className="border-[1px] w-72 h-8 mb-2 text-sm"
+              onChange={(e) => setPhone(e.target.value)}
+              onBlur={validateForm}
+              required
+            />
           </form>
         </div>
 
         <div>
-          <h1 className="text-3xl font-semibold mt-8 ">Your Order</h1>
+          <h1 className="text-3xl font-semibold mt-8">Your Order</h1>
 
-          <div className="">
-            <blockquote className="grid grid-cols-2 gap-32 py-3 px-3 text-sm mt-8 font-semibold border-[1px]">
-              <p>Product</p>
-              <p>Total</p>
-            </blockquote>
-
-            {cart?.map((photo) => (
-              <div
-                key={photo.id}
-                className=" grid grid-cols-2 gap-32 py-3 px-6 text-[8px] sm:text-xs text-zinc-600 border-b-[1px] border-x-[1px] "
-              >
-                <p className="">{photo.description}</p>
-                <p>${photo.price.toFixed(2)}</p>
+          {cart?.length ? (
+            <div>
+              {cart.map((photo) => (
+                <div
+                  key={photo.id}
+                  className="grid grid-cols-2 gap-32 py-3 px-6 text-xs text-zinc-600 border-b-[1px]"
+                >
+                  <p>{photo.description}</p>
+                  <p>${photo.price.toFixed(2)}</p>
+                </div>
+              ))}
+              <div className="grid grid-cols-2 gap-32 py-3 px-2 text-xs border-b-[1px]">
+                <p className="text-zinc-600">Subtotal</p>
+                <p>${totalItemAmount.toFixed(2)}</p>
               </div>
-            ))}
+            </div>
+          ) : (
+            <p className="text-red-600 mt-4">Your cart is empty.</p>
+          )}
 
-            <blockquote className="grid grid-cols-2 gap-32 py-3 px-2 text-xs border-b-[1px] border-x-[1px] ">
-              <p className="text-zinc-600"> Subtotal</p>
-              <p className="">${totalItemAmount.toFixed(2)}</p>
-            </blockquote>
-
-            <button
-              className="uppercase bg-amber-700 text-zinc-100 px-8 py-4 mt-6 mb-10"
-              disabled={isFormValid()}
-            >
-              <PaystackPayment
-                amount={totalItemAmount} // Amount in your currency
-                email={email}
-                name={`${firstName} ${lastName}`}
-                phone={phone}
-                onSuccess={handlePaymentSuccess}
-              />
-            </button>
-          </div>
+          <button
+            className={`uppercase px-8 py-4 mt-6 ${
+              formValid
+                ? "bg-amber-700 text-white"
+                : "bg-gray-400 text-gray-700 cursor-not-allowed"
+            }`}
+            onClick={handleCheckout}
+            disabled={!formValid}
+          >
+            <PaystackPayment
+              amount={totalItemAmount * 100} // Amount in kobo
+              email={email}
+              name={`${firstName} ${lastName}`}
+              phone={phone}
+              onSuccess={handlePaymentSuccess}
+            />
+          </button>
         </div>
       </div>
     </div>

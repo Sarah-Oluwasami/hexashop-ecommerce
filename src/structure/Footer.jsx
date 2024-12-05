@@ -64,7 +64,7 @@ function Footer() {
           <form action="">
             <input
               type="text"
-              className="md:w-64 w-32 py-2 bg-inherit border-b-2 border-gray-500"
+              className="md:w-64 w-20 py-2 bg-inherit border-b-2 border-gray-500"
               placeholder="Enter email"
             />
           </form>
