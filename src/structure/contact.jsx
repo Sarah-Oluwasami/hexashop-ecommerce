@@ -4,7 +4,7 @@ function contact() {
   return (
     <div className="">
       <blockquote className="bg-[url('/images/contact-hero.jpg')] w-[100%] h-96 sm:h-[30rem] bg-cover relative mt-[2rem]">
-        <h1 className="  w-[30rem] text-5xl text-center  text-white absolute bottom-20 md:left-10 ">
+        <h1 className=" md:w-[30rem] px-6 text-5xl text-center  text-white absolute bottom-20 md:left-10 ">
           CONTACT US
         </h1>
       </blockquote>
